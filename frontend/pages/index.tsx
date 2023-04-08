@@ -1,11 +1,14 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-
-const inter = Inter({ subsets: ['latin'] })
+import InputField from './components/inputField'
+import { useState } from 'react'
 
 export default function Home() {
+  const [inputValue, setInputValue] = useState('')
+
+  const handleInputChange = (event: any) => {
+    setInputValue(event.target.value)
+  }
   return (
     <>
       <Head>
@@ -16,8 +19,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.inputWrapper}>
-          <label className={styles.input}>What&apos;s on your mind ?</label>
-          <input className={styles.input} type="text" placeholder="Typing ..."/>
+          <InputField label='What&apos;s on your mind ?' value={inputValue} onChange={handleInputChange}></InputField>
         </div>
       </main>
     </>
