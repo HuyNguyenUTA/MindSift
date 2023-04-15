@@ -1,5 +1,7 @@
-html,
-body,div#__next {
+html, main, body, div#__next {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   padding: 0;
   margin: 0;
@@ -16,6 +18,6 @@ a {
       color: green;   
     }
     &:active {
-      color: yello;
+      color: yellow;
     }
 }

@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-import InputField from './components/inputField'
+import InputField from '../pages/components/InputField'
 import { useState } from 'react'
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('')
 
-  const handleInputChange = (event: any) => {
-    setInputValue(event.target.value)
+  const handleInputValue = (e: any) => {
+    setInputValue(e.target.value)
   }
   return (
     <>
@@ -17,11 +17,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.inputWrapper}>
-          <InputField label='What&apos;s on your mind ?' value={inputValue} onChange={handleInputChange}></InputField>
-        </div>
-      </main>
+      <div className={styles.title}>MindSift</div>
+      <InputField label='What&apos;s on your mind ?' value={inputValue} onChange={handleInputValue}></InputField>
     </>
   )
 }
