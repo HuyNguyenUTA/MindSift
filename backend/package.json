@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@prisma/client": "^4.13.0",
+    "flask-cors": "^0.0.1"
+  }
+}
