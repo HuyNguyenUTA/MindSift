@@ -9,18 +9,18 @@ interface InputFieldProps {
 export default function InputField({label, value, onChange}: InputFieldProps){
     const [paragraph, setParagraph] = useState('')
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://127.0.0.1:5000', {
+            const request = await fetch('http://127.0.0.1:5000', {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json',
                 },
                 body: JSON.stringify({paragraph}),
             })
-            const data = await response.json()
-            console.log(data);
+            const data = await request.json()
+            console.log(data)
         } catch (error) {
             console.error(error);
         }
@@ -30,10 +30,10 @@ export default function InputField({label, value, onChange}: InputFieldProps){
         setParagraph(e.target.value)
     }
     return(
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.label}>{label}</label>
             <input className={styles.input} type="text" value={paragraph} onChange={handleSetParagraph} placeholder='Typing ...'/>
-            <button className={styles.submitButton} type='submit' onSubmit={handleSubmit} >Sift</button>
+            <button className={styles.submitButton} type='submit' >Sift</button>
         </form>
     )
 }
